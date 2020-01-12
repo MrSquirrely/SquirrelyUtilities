@@ -7,5 +7,6 @@ namespace SquirrelyUtilities.API {
         Page SettingsPage { get; }
         string Name { get;  }
         string SettingsName { get; }
+        double Version { get; }
     }
 }

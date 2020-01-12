@@ -1,16 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using SharpCompress.Archives;
+using SharpCompress.Common;
 
 namespace SquirrelyUtilities.Updater {
     class Program {
-        //FileZip, FileLocation,
-        //The file will be downloaded to a temp directory then when being extracted goes into plugins directory
-        //
+        private static string _fileZip;
+        private static string _pluginLocation;
+
         static void Main(string[] args) {
-            foreach (string s in args) {
-                Console.WriteLine(s);
+
+            List<string> commandList = args.ToList();
+
+            foreach (string command in commandList) {
+                switch (command) {
+                    case "-zipfile": {
+                        int indexOf = commandList.IndexOf(command);
+                        indexOf++;
+                        _fileZip = commandList[indexOf];
+                        break;
+                    }
+                    case "-output": {
+                        int indexOf = commandList.IndexOf(command);
+                        indexOf++;
+                        _pluginLocation = commandList[indexOf];
+                        break;
+                    }
+                }
             }
 
+            IArchive archive = ArchiveFactory.Open(@$"{_fileZip}");
+            foreach (IArchiveEntry archiveEntry in archive.Entries) {
+                if (archiveEntry.IsDirectory) continue;
+                Console.WriteLine($"Extracting {archiveEntry.Key} to {_pluginLocation}\\{archiveEntry.Key}");
+                archiveEntry.WriteToDirectory(@$"{_pluginLocation}", new ExtractionOptions(){ExtractFullPath = true, Overwrite = true});
+            }
+
+            Console.WriteLine("Finished! Click any key to close!");
             Console.ReadLine();
+            Process.Start(_pluginLocation);
+            Environment.Exit(0);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Runtime.Loader;
+
 namespace SquirrelyUtilities {
     internal class PluginLoader : AssemblyLoadContext {
 

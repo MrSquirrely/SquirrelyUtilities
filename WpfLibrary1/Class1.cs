@@ -10,7 +10,7 @@ namespace WpfLibrary1 {
         public Page SettingsPage => new Page2();
         public string Name => "Test WPF Library";
         public string SettingsName => "Test WPF Library Settings";
+        public double Version => 0.1;
 
-        
     }
 }

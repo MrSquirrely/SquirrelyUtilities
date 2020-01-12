@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using NLog;
 using NLog.Config;
-using NLog.Fluent;
 using NLog.Targets;
 
 namespace SquirrelyUtilities.API.Logging {
@@ -40,31 +38,6 @@ namespace SquirrelyUtilities.API.Logging {
 
         public void LogInfo(string message) => NLogger(LoggerConfig.LoggerName).Info(message);
         public void LogError(Exception ex, string message) => NLogger(LoggerConfig.LoggerName).Error(ex, message);
-
-        //private static readonly Lazy<Logger> LoggerLazy = new Lazy<Logger>();
-        //public static Logger Instance => LoggerLazy.Value;
-        //private static NLog.Logger NLogger(string value) => LogManager.GetLogger(value);
-        //public LogConfig Config { get; set; }
-        //public void LogError(string message) => NLogger(Config.LogName).Error(message);
-        //public void LogError(Exception ex, string message) => NLogger(Config.LogName).Error(ex, message);
-        //public void LogInfo(string message) => NLogger(Config.LogName).Info(message);
-
-        //public void Dispose() {
-        //    LogManager.Shutdown();
-        //}
-
-        //        public void LogError(Exception ex) {
-        //#if DEBUG
-        //            Debug.WriteLine("++++++++++ Start Error ++++++++++");
-        //            Debug.WriteLine("");
-        //            Debug.WriteLine($"Message: {ex.Message}\n" +
-        //                            $"Stack Trace: {ex.StackTrace}\n" +
-        //                            $"Source: {ex.Source}\n" +
-        //                            $"Target Site: {ex.TargetSite}");
-        //            Debug.WriteLine("");
-        //            Debug.WriteLine("++++++++++ End Error  +++++++++++");
-        //#endif
-        //        }
         public void Dispose() => LogManager.Shutdown();
     }
 }

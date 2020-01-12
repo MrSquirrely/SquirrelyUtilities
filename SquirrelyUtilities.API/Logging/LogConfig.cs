@@ -1,12 +1,4 @@
-﻿
-using System;
-using System.Diagnostics.Contracts;
-using NLog;
-using NLog.Config;
-using NLog.Fluent;
-using NLog.Targets;
-
-namespace SquirrelyUtilities.API.Logging {
+﻿namespace SquirrelyUtilities.API.Logging {
     public class LogConfig {
 
         //Todo: Add the ability to define which levels you want

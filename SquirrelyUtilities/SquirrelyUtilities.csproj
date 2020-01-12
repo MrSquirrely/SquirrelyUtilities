@@ -32,4 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SquirrelyUtilities.API\SquirrelyUtilities.API.csproj" />
   </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy C:\Users\mrsqu\source\repos\SquirrelyUtilities\SquirrelyUtilities.Updater\bin\Release\netcoreapp3.1\win-x64\publish\SquirrelyUtilities.Updater.exe $(OutDir)" />
+  </Target>
 </Project>
