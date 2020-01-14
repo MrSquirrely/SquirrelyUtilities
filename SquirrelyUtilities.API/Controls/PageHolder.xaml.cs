@@ -7,9 +7,9 @@ namespace SquirrelyUtilities.API.Controls {
     public partial class PageHolder {
         public PageHolder() => InitializeComponent();
 
-        public PageHolder(Page pluginMainPage, string pluginName) {
-            PageName = pluginName;
-            Content = pluginMainPage;
+        public PageHolder(Page pluginPage) {
+            PageName = pluginPage.Title;
+            Content = pluginPage;
         }
 
         public string PageName;

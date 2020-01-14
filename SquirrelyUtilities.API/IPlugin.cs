@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace SquirrelyUtilities.API {
     public interface IPlugin {
@@ -8,5 +9,6 @@ namespace SquirrelyUtilities.API {
         string Name { get;  }
         string SettingsName { get; }
         double Version { get; }
+        void Init();
     }
 }

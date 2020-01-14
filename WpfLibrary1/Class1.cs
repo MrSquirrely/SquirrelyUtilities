@@ -1,9 +1,7 @@
-using System;
 using System.Windows.Controls;
 using SquirrelyUtilities.API;
-using SquirrelyUtilities.API.Logging;
 
-namespace WpfLibrary1 {
+namespace TestPlugin {
 
     public class Class1 : IPlugin {
         public Page MainPage => new Page1();
@@ -11,6 +9,8 @@ namespace WpfLibrary1 {
         public string Name => "Test WPF Library";
         public string SettingsName => "Test WPF Library Settings";
         public double Version => 0.1;
+        public void Init() {
 
+        }
     }
 }

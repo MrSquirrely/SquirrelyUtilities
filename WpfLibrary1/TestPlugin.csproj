@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>TestPlugin</AssemblyName>
+    <RootNamespace>TestPlugin</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SquirrelyUtilities.API\SquirrelyUtilities.API.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="lang\lang.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>lang.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="lang\lang.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="lang\lang.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(TargetPath) $(SolutionDir)\SquirrelyUtilities\bin\Debug\netcoreapp3.1\Plugins&#xD;&#xA;copy $(OutDir)\de\WpfLibrary1.resources.dll $(SolutionDir)\SquirrelyUtilities\bin\Debug\netcoreapp3.1\Plugins\de\WpfLibrary1.resources.dll" />
+  </Target>
+
+</Project>

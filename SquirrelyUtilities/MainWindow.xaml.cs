@@ -1,18 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Timers;
 using SquirrelyUtilities.API;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Markup;
+using System.Windows.Navigation;
+using System.Xaml;
+using HandyControl.Controls;
 using HandyControl.Data;
 using SquirrelyUtilities.API.Controls;
 using SquirrelyUtilities.API.Logging;
 using SquirrelyUtilities.API.Updater;
+using Reference = SquirrelyUtilities.API.Reference;
 using TabItem = HandyControl.Controls.TabItem;
+using Timer = System.Timers.Timer;
 
 namespace SquirrelyUtilities {
     public partial class MainWindow {
@@ -26,6 +35,10 @@ namespace SquirrelyUtilities {
         };
 
         public MainWindow() {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("de");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("de");
+            LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+
             InitializeComponent();
 
             AppDomain.CurrentDomain.ProcessExit += MainWindow_OnClosed;
@@ -55,16 +68,15 @@ namespace SquirrelyUtilities {
             }).ToList();
 
             foreach (IPlugin plugin in plugins) {
-                Reference.MainPageList.Add(new PageHolder(plugin.MainPage, plugin.Name));
-                Reference.SettingsPageList.Add(new PageHolder(plugin.SettingsPage, plugin.SettingsName));
+                plugin.Init();
+                Reference.MainPageList.Add(new PageHolder(plugin.MainPage));
+                Reference.SettingsPageList.Add(new PageHolder(plugin.SettingsPage));
             }
 
-            foreach(TabItem tab in Reference.MainPageList.Select(holder =>
-               new TabItem() { Content = new Frame() { Content = holder.Content }, Header = holder.PageName })) {
+            foreach (TabItem tab in Reference.MainPageList.Select(holder => new TabItem() {Content = new Frame() {Content = holder.Content}, Header = holder.PageName})) {
                 UtilitiesTab.Items.Add(tab);
             }
-            foreach(TabItem tab in Reference.SettingsPageList.Select(holder =>
-                new TabItem() { Content = new Frame() { Content = holder.Content }, Header = holder.PageName })) {
+            foreach (TabItem tab in Reference.SettingsPageList.Select(holder => new TabItem() {Content = new Frame() {Content = holder.Content}, Header = holder.PageName})) {
                 UtilitiesTab.Items.Add(tab);
             }
         }
@@ -100,6 +112,7 @@ namespace SquirrelyUtilities {
             ((App)Application.Current).UpdateSkin(tag);
         }
         #endregion
+
         private void UpdateCheck(object sender, ElapsedEventArgs e) {
             if (!Updater.CheckForUpdate(UpdateJsonUrl, Version, "main.json")) {
                 _timer = new Timer {
@@ -124,12 +137,15 @@ namespace SquirrelyUtilities {
         }
 
         private void UpdateButton_OnClick(object sender, RoutedEventArgs e) {
-            if (!_isUpdated) return;
+            if(!_isUpdated) return;
             MessageBoxResult result = HandyControl.Controls.MessageBox.Ask("Do you restart wish to update?", "There is an update!");
             Debug.WriteLine(result);
-            if (result != MessageBoxResult.OK) return;
+            if(result != MessageBoxResult.OK) return;
             Updater.DownloadUpdateFile("main.json", "main.update.7z");
             Environment.Exit(1);
+        }
+
+        private void LangButton_OnClick(object sender, RoutedEventArgs e) {
         }
     }
 }
