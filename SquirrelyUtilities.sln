@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquirrelyUtilities.API", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{ECDBE728-19BC-4CF0-9247-1C8067966DE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfLibrary1", "WpfLibrary1\WpfLibrary1.csproj", "{81398C1D-13BB-42FC-8B3B-EED2E01C5482}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPlugin", "WpfLibrary1\TestPlugin.csproj", "{81398C1D-13BB-42FC-8B3B-EED2E01C5482}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquirrelyUtilities.Updater", "SquirrelyUtilities.Updater\SquirrelyUtilities.Updater.csproj", "{4BF9706C-1D00-4833-8474-41D1B1AE446A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquirrelyUtilities.Updater", "SquirrelyUtilities.Updater\SquirrelyUtilities.Updater.csproj", "{4BF9706C-1D00-4833-8474-41D1B1AE446A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,5 +44,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75FC2C9F-4F07-445B-87EA-D2A2B7C88494}
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

@@ -61,11 +61,38 @@ namespace SquirrelyUtilities.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utilities.
+        ///   Looks up a localized string similar to Report Bugs or Submit a feature request.
+        /// </summary>
+        public static string BugButtonTooltip {
+            get {
+                return ResourceManager.GetString("BugButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Squirrely Utilities.
         /// </summary>
         public static string MainTitle {
             get {
                 return ResourceManager.GetString("MainTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open the settings menu.
+        /// </summary>
+        public static string SettingsButtonTooltip {
+            get {
+                return ResourceManager.GetString("SettingsButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for updates.
+        /// </summary>
+        public static string UpdateButtonTooltip {
+            get {
+                return ResourceManager.GetString("UpdateButtonTooltip", resourceCulture);
             }
         }
     }

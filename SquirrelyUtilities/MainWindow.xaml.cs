@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 using System.Timers;
 using SquirrelyUtilities.API;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Markup;
-using System.Windows.Navigation;
-using System.Xaml;
+using System.Windows.Media.Effects;
 using HandyControl.Controls;
 using HandyControl.Data;
 using SquirrelyUtilities.API.Controls;
+using SquirrelyUtilities.API.Exceptions;
 using SquirrelyUtilities.API.Logging;
 using SquirrelyUtilities.API.Updater;
+using SquirrelyUtilities.Views;
 using Reference = SquirrelyUtilities.API.Reference;
 using TabItem = HandyControl.Controls.TabItem;
 using Timer = System.Timers.Timer;
@@ -26,6 +23,7 @@ using Timer = System.Timers.Timer;
 namespace SquirrelyUtilities {
     public partial class MainWindow {
         private readonly List<string> _pluginsList = new List<string>();
+        private SettingsWindow _settingsWindow;
         private const string UpdateJsonUrl = "https://raw.githubusercontent.com/MrSquirrely/UpdateJsons/master/main.json";
         private const double Version = 0.5;
         private bool _isUpdated;
@@ -35,11 +33,12 @@ namespace SquirrelyUtilities {
         };
 
         public MainWindow() {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("de");
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("de");
-            LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+            //Thread.CurrentThread.CurrentCulture = new CultureInfo("de");
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("de");
+            //LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
 
             InitializeComponent();
+            //NonClientAreaBackground = SystemParameters.WindowGlassBrush;
 
             AppDomain.CurrentDomain.ProcessExit += MainWindow_OnClosed;
             _timer.Elapsed += UpdateCheck;
@@ -76,9 +75,9 @@ namespace SquirrelyUtilities {
             foreach (TabItem tab in Reference.MainPageList.Select(holder => new TabItem() {Content = new Frame() {Content = holder.Content}, Header = holder.PageName})) {
                 UtilitiesTab.Items.Add(tab);
             }
-            foreach (TabItem tab in Reference.SettingsPageList.Select(holder => new TabItem() {Content = new Frame() {Content = holder.Content}, Header = holder.PageName})) {
-                UtilitiesTab.Items.Add(tab);
-            }
+            //foreach (TabItem tab in Reference.SettingsPageList.Select(holder => new TabItem() {Content = new Frame() {Content = holder.Content}, Header = holder.PageName})) {
+            //    UtilitiesTab.Items.Add(tab);
+            //}
         }
 
         private static Assembly LoadPlugins(string pluginPath) {
@@ -102,16 +101,15 @@ namespace SquirrelyUtilities {
                     $"Available types: {availableTypes}");
             }
         }
-
-        #region Change Skin
-        private void ButtonConfig_OnClick(object sender, RoutedEventArgs e) => PopupConfig.IsOpen = true;
-
-        private void ButtonSkins_OnClick(object sender, RoutedEventArgs e) {
-            if(!(e.OriginalSource is Button button) || !(button.Tag is SkinType tag)) return;
-            PopupConfig.IsOpen = false;
-            ((App)Application.Current).UpdateSkin(tag);
+        
+        private void ConfigButton_OnClick(object sender, RoutedEventArgs e) {
+            _settingsWindow = new SettingsWindow {
+                Owner = this
+            };
+            Effect = new BlurEffect();
+            _settingsWindow.ShowDialog();
+            Effect = null;
         }
-        #endregion
 
         private void UpdateCheck(object sender, ElapsedEventArgs e) {
             if (!Updater.CheckForUpdate(UpdateJsonUrl, Version, "main.json")) {
@@ -127,10 +125,10 @@ namespace SquirrelyUtilities {
         }
 
         private void MainWindow_OnClosed(object sender, EventArgs e) {
-            if(Environment.ExitCode == 1) {
-             _logger.LogInfo("Closing");
-             string file = $"{Environment.CurrentDirectory}/SquirrelyUtilities.Updater.exe";
-             string parameters = $"-zipfile main.update.7z -output {Environment.CurrentDirectory}/";
+            if (Environment.ExitCode == 1) {
+                _logger.LogInfo("Closing");
+                string file = $"{Environment.CurrentDirectory}/SquirrelyUtilities.Updater.exe";
+                string parameters = $"-zipfile main.update.7z -output {Environment.CurrentDirectory}/";
                 Process.Start(file, parameters);
             }
             _logger.Dispose();
@@ -145,7 +143,8 @@ namespace SquirrelyUtilities {
             Environment.Exit(1);
         }
 
-        private void LangButton_OnClick(object sender, RoutedEventArgs e) {
+        private void BugButton_OnClick(object sender, RoutedEventArgs e) {
+
         }
     }
 }

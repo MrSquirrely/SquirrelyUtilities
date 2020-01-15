@@ -6,7 +6,6 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:lang="clr-namespace:SquirrelyUtilities.lang"
         mc:Ignorable="d"
-        
         Title="{x:Static lang:lang.MainTitle}"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource WindowWin10}"
@@ -19,27 +18,23 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal" >
-                <hc:Badge Name="UpdateBadge" Style="{StaticResource BadgeDanger}">
-                    <Button HorizontalAlignment="Right" Name="UpdateButton" Click="UpdateButton_OnClick" Style="{StaticResource ButtonIcon}" Foreground="{StaticResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource DownloadGeometry}"/>
-                </hc:Badge>
+            <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal" Margin="2,0,0,0">
+                <Menu>
+                    <MenuItem Header="Plugins" Name="PluginsMenu">
+                        <MenuItem Header="GitHub"/>
+                    </MenuItem>
+                </Menu>
             </StackPanel>
-            <Button HorizontalAlignment="Right" Grid.Column="1" Click="ButtonConfig_OnClick" Name="ButtonConfig" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource ConfigGeometry}"/>
-            <Popup AllowsTransparency="True" Grid.Column="1" PlacementTarget="{Binding ElementName=ButtonConfig}" HorizontalOffset="-25" Name="PopupConfig" VerticalOffset="6" StaysOpen="False">
-                <Border Background="{DynamicResource SecondaryRegionBrush}" CornerRadius="4" Margin="16" Effect="{StaticResource EffectShadow2}">
-                    <StackPanel Button.Click="ButtonSkins_OnClick"  Margin="10,10,10,10">
-                        <Button Tag="{x:Static hc:SkinType.Default}" Style="{StaticResource ButtonCustom}">
-                            <Border Background="White" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
-                        </Button>
-                        <Button Tag="{x:Static hc:SkinType.Dark}" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
-                            <Border Background="Black" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
-                        </Button>
-                    </StackPanel>
-                </Border>
-            </Popup>
+            <StackPanel VerticalAlignment="Stretch" Grid.Column="1" Orientation="Horizontal" >
+                <Button HorizontalAlignment="Right" Click="BugButton_OnClick"  Name="BugButton" hc:Poptip.Content="{x:Static lang:lang.BugButtonTooltip}" hc:Poptip.Placement="Bottom" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource FatalGeometry}"/>
+                <hc:Badge Name="UpdateBadge" Style="{StaticResource BadgeDanger}">
+                    <Button HorizontalAlignment="Right" Name="UpdateButton" hc:Poptip.Content="{x:Static lang:lang.UpdateButtonTooltip}" hc:Poptip.Placement="Bottom" Click="UpdateButton_OnClick" Style="{StaticResource ButtonIcon}" Foreground="{StaticResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource DownloadGeometry}"/>
+                </hc:Badge>
+                <Button HorizontalAlignment="Right" Click="ConfigButton_OnClick" Name="ConfigButton" hc:Poptip.Content="{x:Static lang:lang.SettingsButtonTooltip}" hc:Poptip.Placement="Bottom" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource ConfigGeometry}"/>
+            </StackPanel>
         </Grid>
     </hc:Window.NonClientAreaContent>
     <Grid>
-        <hc:TabControl Name="UtilitiesTab" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ShowCloseButton="True" IsDraggable="True" IsUWPStyle="True" HeaderBrush="Blue"/>
+        <hc:TabControl Name="UtilitiesTab" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsDraggable="True" IsUWPStyle="True" HeaderBrush="Blue"/>
     </Grid>
 </hc:Window>
