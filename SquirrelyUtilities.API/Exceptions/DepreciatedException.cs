@@ -1,7 +1,6 @@
 ﻿using System;
 
 namespace SquirrelyUtilities.API.Exceptions {
-    [Serializable]
     public class DepreciatedException : Exception {
         public DepreciatedException() {
 

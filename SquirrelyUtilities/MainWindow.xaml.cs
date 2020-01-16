@@ -9,7 +9,6 @@ using SquirrelyUtilities.API;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Effects;
-using HandyControl.Controls;
 using HandyControl.Data;
 using SquirrelyUtilities.API.Controls;
 using SquirrelyUtilities.API.Exceptions;
@@ -38,7 +37,7 @@ namespace SquirrelyUtilities {
             //LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
 
             InitializeComponent();
-            //NonClientAreaBackground = SystemParameters.WindowGlassBrush;
+            NonClientAreaBackground = SystemParameters.WindowGlassBrush;
 
             AppDomain.CurrentDomain.ProcessExit += MainWindow_OnClosed;
             _timer.Elapsed += UpdateCheck;
@@ -49,7 +48,6 @@ namespace SquirrelyUtilities {
                 CreateSeparateFile = true
             };
             _logger = Logger.Instance;
-
             _logger.LogInfo($"This is version: {Version}");
 
             Reference.MainWindow = this;
@@ -75,9 +73,6 @@ namespace SquirrelyUtilities {
             foreach (TabItem tab in Reference.MainPageList.Select(holder => new TabItem() {Content = new Frame() {Content = holder.Content}, Header = holder.PageName})) {
                 UtilitiesTab.Items.Add(tab);
             }
-            //foreach (TabItem tab in Reference.SettingsPageList.Select(holder => new TabItem() {Content = new Frame() {Content = holder.Content}, Header = holder.PageName})) {
-            //    UtilitiesTab.Items.Add(tab);
-            //}
         }
 
         private static Assembly LoadPlugins(string pluginPath) {
