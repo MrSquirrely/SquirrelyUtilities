@@ -10,6 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Include=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="sharpcompress" Version="0.24.0" />
   </ItemGroup>
 

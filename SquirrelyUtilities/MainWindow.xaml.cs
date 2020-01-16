@@ -11,7 +11,6 @@ using System.Windows.Controls;
 using System.Windows.Media.Effects;
 using HandyControl.Data;
 using SquirrelyUtilities.API.Controls;
-using SquirrelyUtilities.API.Exceptions;
 using SquirrelyUtilities.API.Logging;
 using SquirrelyUtilities.API.Updater;
 using SquirrelyUtilities.Views;

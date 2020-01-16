@@ -10,6 +10,8 @@ namespace SquirrelyUtilities.Updater {
         private static string _fileZip;
         private static string _pluginLocation;
 
+        //string parameters = $"-zipfile main.update.7z -output {Environment.CurrentDirectory}/";
+        //Parameters are -zipfile "the zip name" -output "the location of the plugin"
         static void Main(string[] args) {
 
             List<string> commandList = args.ToList();
@@ -40,7 +42,7 @@ namespace SquirrelyUtilities.Updater {
 
             Console.WriteLine("Finished! Click any key to close!");
             Console.ReadLine();
-            Process.Start(_pluginLocation);
+            Process.Start("SquirrelyUtilities.exe");
             Environment.Exit(0);
         }
     }
