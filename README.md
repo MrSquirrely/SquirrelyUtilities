@@ -13,9 +13,9 @@ Windows:
 
 | Main Program | Image Converter | Zipper       |
 | :----------- | :-------------- | ------------ |
-| Pre-V0.6     | Coming Soon!    | Coming Soon! |
-| Pre-V0.5     |                 |              |
-| Pre-V0.0.1   |                 |              |
+|[Pre-V0.6][v06]    | Coming Soon!    | Coming Soon! |
+|[Pre-V0.5][v05]   |                 |              |
+|[Pre-V0.0.1][v001]  |                 |              |
 |              |                 |              |
 |              |                 |              |
 |              |                 |              |
@@ -35,5 +35,8 @@ Distributed under the GNU GPLv3 license. See ``LICENSE`` for more information.
 
 Squirrely Utilities API is Distributed under the GNU LGPLv3 license.
 
-<!-- Markdown link & img dfn's -->
+<!-- Reference Links -->
+[v06]: https://github.com/MrSquirrely/SquirrelyUtilities/blob/master/MainProgram-Updates.md#v06
+[v05]:https://github.com/MrSquirrely/SquirrelyUtilities/blob/master/MainProgram-Updates.md#v05
+[v001]:https://github.com/MrSquirrely/SquirrelyUtilities/blob/master/MainProgram-Updates.md#v001
 <!-- TODO: I'm tired. So thisl wait -->
