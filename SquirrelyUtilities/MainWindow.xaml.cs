@@ -13,6 +13,7 @@ using HandyControl.Data;
 using SquirrelyUtilities.API.Controls;
 using SquirrelyUtilities.API.Logging;
 using SquirrelyUtilities.API.Updater;
+using SquirrelyUtilities.lang;
 using SquirrelyUtilities.Views;
 using Reference = SquirrelyUtilities.API.Reference;
 using TabItem = HandyControl.Controls.TabItem;
@@ -31,13 +32,10 @@ namespace SquirrelyUtilities {
         };
 
         public MainWindow() {
-            //Thread.CurrentThread.CurrentCulture = new CultureInfo("de");
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("de");
-            //LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
-
             InitializeComponent();
-            NonClientAreaBackground = SystemParameters.WindowGlassBrush;
 
+            ChangeLang.MainWindow = this;
+            
             AppDomain.CurrentDomain.ProcessExit += MainWindow_OnClosed;
             _timer.Elapsed += UpdateCheck;
             _timer.Start();

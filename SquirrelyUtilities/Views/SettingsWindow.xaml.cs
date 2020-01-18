@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HandyControl.Data;
+using SquirrelyUtilities.lang;
 using SquirrelyUtilities.API;
 using SquirrelyUtilities.API.Controls;
 using TabItem = HandyControl.Controls.TabItem;
@@ -33,6 +34,16 @@ namespace SquirrelyUtilities.Views {
         private void ButtonSkins_OnClick(object sender, RoutedEventArgs e) {
             //if(!(e.OriginalSource is Button button) || !(button.Tag is SkinType tag)) return;
             //((App)Application.Current).UpdateSkin(tag);
+        }
+
+        private void SaveButton_OnClick(object sender, RoutedEventArgs e) {
+            if (EnglishItem.IsSelected) {
+                ChangeLang.ChangeToEnglish();
+            }
+
+            if (GermanItem.IsSelected) {
+                ChangeLang.ChangeToGerman();
+            }
         }
     }
 }

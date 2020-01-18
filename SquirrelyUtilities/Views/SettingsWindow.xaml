@@ -13,14 +13,21 @@
     <Grid>
         <hc:TabControl Name="SettingsTab" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsDraggable="True" IsUWPStyle="True" HeaderBrush="Blue">
             <hc:TabItem Header="General">
-                <StackPanel Button.Click="ButtonSkins_OnClick"  Margin="10,10,10,10">
+                <!--<StackPanel Button.Click="ButtonSkins_OnClick"  Margin="10,10,10,10">
                     <Button Tag="{x:Static hc:SkinType.Default}" Style="{StaticResource ButtonCustom}">
                         <Border Background="White" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
                     </Button>
                     <Button Tag="{x:Static hc:SkinType.Dark}" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
                         <Border Background="Black" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
                     </Button>
-                </StackPanel>
+                </StackPanel>-->
+                <Grid>
+                    <hc:ComboBox Name="LanguageCombo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="260" hc:InfoElement.TitleWidth="60" hc:InfoElement.TitleAlignment="Left" hc:InfoElement.Title="Language" hc:InfoElement.Necessary="True" SelectedIndex="0">
+                        <ComboBoxItem Name="EnglishItem" Content="English"/>
+                        <ComboBoxItem Name="GermanItem" Content="German"/>
+                    </hc:ComboBox>
+                    <Button Content="Save" Name="SaveButton" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Click="SaveButton_OnClick"/>
+                </Grid>
             </hc:TabItem>
         </hc:TabControl>
     </Grid>
