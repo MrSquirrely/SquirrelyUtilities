@@ -12,10 +12,8 @@
   padding: 0.5em 1em;
 }
 img {
-  display: block;
+  height: auto;
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 // Tables
@@ -114,33 +112,11 @@ footer {
 .related-articles {
   margin-top: 2em;
   h4 {
-    font-family: $font-family-base;
+    font-family: $base-font-family;
   }
   ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-}
-
-// Scrollbar
-::-webkit-scrollbar {
-    width: 4px;
-    height: 6px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.5);
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-}
-
-::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(0,0,0,0.2);
 }
