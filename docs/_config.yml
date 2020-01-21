@@ -1,1 +1,71 @@
-remote_theme: pmarsceill/just-the-docs
+#
+###################################
+# Site wide configuration
+####################################
+#
+title: Squirrely Utilities
+email: james@mrsquirrely.net
+description: Official blog for Squirrely Utilities
+url: # the base hostname & protocol for your site
+keywords: ["blog", "squirrely", "utilities", "official"]
+
+#
+###################################
+# Jekyll configuration
+####################################
+#
+timezone:          America/Indiana/Indianapolis
+markdown:          kramdown
+highlighter:       rouge
+excerpt_separator: <!--more-->
+permalink:         /articles/:year-:month/:title
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+
+#
+###################################
+# Site Owner configuration
+####################################
+#
+owner:
+  name: Mr. Squirrely
+  avatar: leonids-logo.png
+  job: "C# Developer"
+  bio: "A simple man who likes simple things."
+  email: james@mrsquirrely.net
+  disqus-shortname:
+  twitter: TheMrSquirrely #username
+  facebook: #username
+  google:
+    plus: #username
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
+  github: MrSquirrely #username
+  gitlab: #username
+  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
+  linkedin: #username
+  skype: #username
+  xing: #username
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: DXjimmieXD #username
+  soundcloud: #username
+  weibo: #username
+  flickr: #username
+  500px: #username
+  codepen: #username
+  reddit: #username
+  telegram: #username
