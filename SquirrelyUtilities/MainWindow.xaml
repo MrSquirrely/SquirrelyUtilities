@@ -27,14 +27,34 @@
             </StackPanel>
             <StackPanel VerticalAlignment="Stretch" Grid.Column="1" Orientation="Horizontal" >
                 <Button HorizontalAlignment="Right" Click="BugButton_OnClick"  Name="BugButton" hc:Poptip.Content="{x:Static lang:lang.BugButtonTooltip}" hc:Poptip.Placement="Bottom" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource FatalGeometry}"/>
+                <Popup AllowsTransparency="True" PlacementTarget="{Binding ElementName=ButtonConfig}" HorizontalOffset="-100" Name="PopupConfig" VerticalOffset="6" StaysOpen="False">
+                    <Border Background="{DynamicResource SecondaryRegionBrush}" CornerRadius="4" Margin="16" Effect="{StaticResource EffectShadow2}">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Margin="10">
+                                <hc:TextBox Width="400" Name="TitleTextBox"  hc:InfoElement.TitleWidth="40" hc:InfoElement.Placeholder="Title" hc:InfoElement.TitleAlignment="Top"  hc:InfoElement.Title="Title" Style="{StaticResource TextBoxExtend}"/>
+                                <GroupBox Style="{StaticResource GroupBoxOriginal}" Header="Description" Width="400" Height="300" hc:InfoElement.TitleAlignment="Top" >
+                                    <RichTextBox  Name="BodyTextBox"/>
+                                </GroupBox>
+                                <Grid Margin="0 10 0 0">
+                                    <hc:ComboBox HorizontalAlignment="Left" Width="300" hc:InfoElement.TitleWidth="90" hc:InfoElement.TitleAlignment="Left"  hc:InfoElement.Title="Bug or Feature"/>
+                                    <Button HorizontalAlignment="Right" Width="80" Content="Submit"/>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Popup>
                 <hc:Badge Name="UpdateBadge" Style="{StaticResource BadgeDanger}">
                     <Button HorizontalAlignment="Right" Name="UpdateButton" hc:Poptip.Content="{x:Static lang:lang.UpdateButtonTooltip}" hc:Poptip.Placement="Bottom" Click="UpdateButton_OnClick" Style="{StaticResource ButtonIcon}" Foreground="{StaticResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource DownloadGeometry}"/>
                 </hc:Badge>
                 <Button HorizontalAlignment="Right" Click="ConfigButton_OnClick" Name="ConfigButton" hc:Poptip.Content="{x:Static lang:lang.SettingsButtonTooltip}" hc:Poptip.Placement="Bottom" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource ConfigGeometry}"/>
+                <Button HorizontalAlignment="Right" Click="AddPluginButton_OnClick"  Name="AddPluginButton" hc:Poptip.Content="{x:Static lang:lang.SettingsButtonTooltip}" hc:Poptip.Placement="Bottom" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryTextBrush}" hc:IconElement.Geometry="{StaticResource AddGeometry}"/>
             </StackPanel>
         </Grid>
     </hc:Window.NonClientAreaContent>
     <Grid>
+        <hc:Drawer Name="PluginDrawer" Dock="Right" ShowMode="Push">
+            <Grid Background="{DynamicResource RegionBrush}" Name="PluginGrid"/>
+        </hc:Drawer>
         <hc:TabControl Name="UtilitiesTab" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsDraggable="True" IsUWPStyle="True" HeaderBrush="Blue"/>
     </Grid>
 </hc:Window>

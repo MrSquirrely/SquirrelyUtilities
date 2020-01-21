@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Timers;
 using SquirrelyUtilities.API;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Media.Effects;
 using HandyControl.Data;
 using SquirrelyUtilities.API.Controls;
 using SquirrelyUtilities.API.Logging;
+using SquirrelyUtilities.API.Settings;
 using SquirrelyUtilities.API.Updater;
-using SquirrelyUtilities.lang;
 using SquirrelyUtilities.Views;
 using Reference = SquirrelyUtilities.API.Reference;
 using TabItem = HandyControl.Controls.TabItem;
@@ -23,6 +26,7 @@ namespace SquirrelyUtilities {
     public partial class MainWindow {
         private readonly List<string> _pluginsList = new List<string>();
         private SettingsWindow _settingsWindow;
+        private readonly Settings _settings = new Settings($"{Environment.CurrentDirectory}/utilities.json");
         private const string UpdateJsonUrl = "https://raw.githubusercontent.com/MrSquirrely/UpdateJsons/master/main.json";
         private const double Version = 0.5;
         private bool _isUpdated;
@@ -34,8 +38,14 @@ namespace SquirrelyUtilities {
         public MainWindow() {
             InitializeComponent();
 
-            ChangeLang.MainWindow = this;
-            
+            CultureInfo cultureInfo = _settings.GetSetting("language") switch {
+                "en" => new CultureInfo("en"),
+                _ => new CultureInfo("en")
+            };
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            Thread.CurrentThread.CurrentUICulture = cultureInfo;
+            LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+
             AppDomain.CurrentDomain.ProcessExit += MainWindow_OnClosed;
             _timer.Elapsed += UpdateCheck;
             _timer.Start();
@@ -135,8 +145,11 @@ namespace SquirrelyUtilities {
             Environment.Exit(1);
         }
 
-        private void BugButton_OnClick(object sender, RoutedEventArgs e) {
+        private void BugButton_OnClick(object sender, RoutedEventArgs e) => PopupConfig.IsOpen = true;
 
+        private void AddPluginButton_OnClick(object sender, RoutedEventArgs e) {
+            PluginGrid.Children.Add(new PluginRepo());
+            PluginDrawer.IsOpen = !PluginDrawer.IsOpen;
         }
     }
 }

@@ -1,0 +1,431 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SquirrelyUtilities.API</name>
+    </assembly>
+    <members>
+        <member name="T:SquirrelyUtilities.API.Controls.PageHolder">
+            <summary>
+            Interaction logic for PageHolder.xaml
+            </summary>
+            <summary>
+            PageHolder
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Controls.PageHolder.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Controls.PageHolder.#ctor(System.Windows.Controls.Page)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Controls.PageHolder"/> class.
+            </summary>
+            <param name="pluginPage">The plugin page.</param>
+        </member>
+        <member name="F:SquirrelyUtilities.API.Controls.PageHolder.PageName">
+            <summary>
+            The page name
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Controls.PageHolder.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Exceptions.DepreciatedException">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:SquirrelyUtilities.API.Exceptions.DepreciatedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Exceptions.DepreciatedException"/> class.
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Exceptions.DepreciatedException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Exceptions.DepreciatedException"/> class.
+            </summary>
+            <param name="oldMethod">The old method.</param>
+            <param name="newMethod">The new method.</param>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Exceptions.PluginNotFoundException">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:SquirrelyUtilities.API.Exceptions.PluginNotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Exceptions.PluginNotFoundException"/> class.
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Exceptions.PluginNotFoundException.#ctor(System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Exceptions.PluginNotFoundException"/> class.
+            </summary>
+            <param name="assembly">The assembly.</param>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Exceptions.SettingNotFound">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:SquirrelyUtilities.API.Exceptions.SettingNotFound.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Exceptions.SettingNotFound"/> class.
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Exceptions.SettingNotFound.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Exceptions.SettingNotFound"/> class.
+            </summary>
+            <param name="setting">The setting.</param>
+        </member>
+        <member name="T:SquirrelyUtilities.API.IPlugin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SquirrelyUtilities.API.IPlugin.MainPage">
+            <summary>
+            Gets the main page.
+            </summary>
+            <value>
+            The main page.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.IPlugin.SettingsPage">
+            <summary>
+            Gets the settings page.
+            </summary>
+            <value>
+            The settings page.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.IPlugin.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.IPlugin.SettingsName">
+            <summary>
+            Gets the name of the settings.
+            </summary>
+            <value>
+            The name of the settings.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.IPlugin.Version">
+            <summary>
+            Gets the version.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="M:SquirrelyUtilities.API.IPlugin.Init">
+            <summary>
+            Initializes this instance.
+            </summary>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Logging.LogConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.LogConfig.LoggerName">
+            <summary>
+            Gets or sets the name of the logger.
+            </summary>
+            <value>
+            The name of the logger.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.LogConfig.CreateSeparateFile">
+            <summary>
+            Gets or sets a value indicating whether [create separate file].
+            </summary>
+            <value>
+              <c>true</c> if [create separate file]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.LogConfig.LogInfo">
+            <summary>
+            Gets or sets a value indicating whether [log information].
+            </summary>
+            <value>
+              <c>true</c> if [log information]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.LogConfig.LogDebug">
+            <summary>
+            Gets or sets a value indicating whether [log debug].
+            </summary>
+            <value>
+              <c>true</c> if [log debug]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.LogConfig.LogWarn">
+            <summary>
+            Gets or sets a value indicating whether [log warn].
+            </summary>
+            <value>
+              <c>true</c> if [log warn]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.LogConfig.LogError">
+            <summary>
+            Gets or sets a value indicating whether [log error].
+            </summary>
+            <value>
+              <c>true</c> if [log error]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.LogConfig.LogFatal">
+            <summary>
+            Gets or sets a value indicating whether [log fatal].
+            </summary>
+            <value>
+              <c>true</c> if [log fatal]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Logging.Logger">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.Logger.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>
+            The instance.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Logging.Logger.LoggerConfig">
+            <summary>
+            Gets or sets the logger configuration.
+            </summary>
+            <value>
+            The logger configuration.
+            </value>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Logging.Logger"/> class.
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogInfo(System.String)">
+            <summary>
+            Logs the information.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogInfo(System.Exception,System.String)">
+            <summary>
+            Logs the information.
+            </summary>
+            <param name="ex">The exception.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogError(System.String)">
+            <summary>
+            Logs the error.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogError(System.Exception,System.String)">
+            <summary>
+            Logs the error.
+            </summary>
+            <param name="ex">The exception.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogDebug(System.String)">
+            <summary>
+            Logs the debug.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogDebug(System.Exception,System.String)">
+            <summary>
+            Logs the debug.
+            </summary>
+            <param name="ex">The exception.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogFatal(System.String)">
+            <summary>
+            Logs the fatal.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogFatal(System.Exception,System.String)">
+            <summary>
+            Logs the fatal.
+            </summary>
+            <param name="ex">The exception.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogWarn(System.String)">
+            <summary>
+            Logs the warn.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.LogWarn(System.Exception,System.String)">
+            <summary>
+            Logs the warn.
+            </summary>
+            <param name="ex">The exception.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Logging.Logger.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Reference">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SquirrelyUtilities.API.Reference.MainPageList">
+            <summary>
+            The main page list
+            </summary>
+        </member>
+        <member name="F:SquirrelyUtilities.API.Reference.SettingsPageList">
+            <summary>
+            The settings page list
+            </summary>
+        </member>
+        <member name="F:SquirrelyUtilities.API.Reference.MainWindow">
+            <summary>
+            The main window
+            </summary>
+        </member>
+        <member name="F:SquirrelyUtilities.API.Reference.UtilitiesTab">
+            <summary>
+            The utilities tab
+            </summary>
+        </member>
+        <member name="F:SquirrelyUtilities.API.Reference.PluginDirectory">
+            <summary>
+            The plugin directory
+            </summary>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Settings.Settings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Settings.Settings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Settings.Settings"/> class.
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Settings.Settings.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SquirrelyUtilities.API.Settings.Settings"/> class.
+            </summary>
+            <param name="settingsFile">The settings file.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Settings.Settings.Open(System.String)">
+            <summary>
+            Opens the specified settings file.
+            </summary>
+            <param name="settingsFile">The settings file.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Settings.Settings.Save(System.String)">
+            <summary>
+            Saves the specified settings file.
+            </summary>
+            <param name="settingsFile">The settings file.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Settings.Settings.GetSetting(System.String)">
+            <summary>
+            Gets the setting.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>A mappable object</returns>
+            <exception cref="T:SquirrelyUtilities.API.Exceptions.SettingNotFound"></exception>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Settings.Settings.SaveSetting(System.String,System.Object)">
+            <summary>
+            Saves the setting.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <exception cref="T:SquirrelyUtilities.API.Exceptions.SettingNotFound"></exception>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Updater.Update">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Updater.Update.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="P:SquirrelyUtilities.API.Updater.Update.DownloadUrl">
+            <summary>
+            Gets or sets the download URL.
+            </summary>
+            <value>
+            The download URL.
+            </value>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Updater.Updater">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Updater.Updater.CheckForUpdate(System.String,System.Double,System.String)">
+            <summary>
+            Checks for an update to the plugin.
+            </summary>
+            <param name="url">The URL of the update Json file.</param>
+            <param name="version">The current version of the software running.</param>
+            <param name="fileName">Name of the update Json file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Updater.Updater.DownloadUpdateFile(System.String,System.String)">
+            <summary>
+            Downloads the update file.
+            </summary>
+            <param name="updateFile">The url of update file.</param>
+            <param name="fileName">Name of the update file.</param>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Updater.Updater.UpdateFile(System.String)">
+            <summary>
+            Updates the file.
+            </summary>
+            <param name="zipName">Name of the zip.</param>
+        </member>
+        <member name="T:SquirrelyUtilities.API.Web.Downloader">
+            <summary>
+            Used to download files
+            </summary>
+        </member>
+        <member name="M:SquirrelyUtilities.API.Web.Downloader.DownloadUpdate(System.String,System.String)">
+            <summary>
+            Downloads the specified URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="fileName">Name of the file.</param>
+        </member>
+    </members>
+</doc>

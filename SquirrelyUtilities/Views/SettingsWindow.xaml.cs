@@ -37,13 +37,6 @@ namespace SquirrelyUtilities.Views {
         }
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e) {
-            if (EnglishItem.IsSelected) {
-                ChangeLang.ChangeToEnglish();
-            }
-
-            if (GermanItem.IsSelected) {
-                ChangeLang.ChangeToGerman();
-            }
         }
     }
 }
